@@ -1,0 +1,39 @@
+
+
+# merge conditions (per species)
+cat HS_H3K4me3_UNST_merged.bed3 HS_H3K4me3_pIC4_merged.bed3 | sort -k1,1 -k2,2n | mergeBed -i - > HS_H3K4me3_all_merged.bed3
+
+# name the merged peaks: 
+awk '{printf("%s\t%s\t%s\tHS_H3K4me3_all_merged_%s\n", $1,$2,$3,NR)}' HS_H3K4me3_all_merged.bed3 > HS_H3K4me3_all_merged.bed4
+
+
+
+# merge HS UNST + PIC4 H3K27
+bash overlap_individulas_and_merge_per_condition.sh human/HS3_H3K27ac_UNST_peaks.narrowPeak human/HS4_H3K27ac_UNST_peaks.narrowPeak human/HS5_H3K27ac_UNST_peaks.narrowPeak merged_human/HS_H3K27ac_UNST_merged.bed
+bash overlap_individulas_and_merge_per_condition.sh human/HS3_H3K27ac_PIC4_peaks.narrowPeak human/HS4_H3K27ac_PIC4_peaks.narrowPeak human/HS5_H3K27ac_PIC4_peaks.narrowPeak merged_human/HS_H3K27ac_PIC4_merged.bed
+cat merged_human/HS_H3K27ac_UNST_merged.bed merged_human/HS_H3K27ac_PIC4_merged.bed | sort -k1,1 -k2,2n | mergeBed -i - > merged_human/HS_H3K27ac_all_merged.bed
+awk '{printf("%s\t%s\t%s\tHS_H3K27ac_all_merged_%s\n", $1,$2,$3,NR)}' merged_human/HS_H3K27ac_all_merged.bed > merged_human/HS_H3K27ac_all_merged.bed4
+
+
+# merge HS UNST + PIC4 H3K4me3
+bash overlap_individulas_and_merge_per_condition.sh human/HS3_H3K4me3_UNST_peaks.narrowPeak human/HS4_H3K4me3_UNST_peaks.narrowPeak human/HS5_H3K4me3_UNST_peaks.narrowPeak merged_human/HS_H3K4me3_UNST_merged.bed
+bash overlap_individulas_and_merge_per_condition.sh human/HS3_H3K4me3_PIC4_peaks.narrowPeak human/HS4_H3K4me3_PIC4_peaks.narrowPeak human/HS5_H3K4me3_PIC4_peaks.narrowPeak merged_human/HS_H3K4me3_PIC4_merged.bed
+cat merged_human/HS_H3K4me3_UNST_merged.bed merged_human/HS_H3K4me3_PIC4_merged.bed | sort -k1,1 -k2,2n | mergeBed -i - > merged_human/HS_H3K4me3_all_merged.bed
+awk '{printf("%s\t%s\t%s\tHS_H3K4me3_all_merged_%s\n", $1,$2,$3,NR)}' merged_human/HS_H3K4me3_all_merged.bed > merged_human/HS_H3K4me3_all_merged.bed4
+
+
+
+
+# merge MM UNST + PIC4 H3K27
+bash overlap_individulas_and_merge_per_condition.sh mouse/MM3_H3K27ac_UNST_peaks.narrowPeak mouse/MM4_H3K27ac_UNST_peaks.narrowPeak mouse/MM5_H3K27ac_UNST_peaks.narrowPeak merged_mouse/MM_H3K27ac_UNST_merged.bed
+bash overlap_individulas_and_merge_per_condition.sh mouse/MM3_H3K27ac_PIC4_peaks.narrowPeak mouse/MM4_H3K27ac_PIC4_peaks.narrowPeak mouse/MM5_H3K27ac_PIC4_peaks.narrowPeak merged_mouse/MM_H3K27ac_PIC4_merged.bed
+cat merged_mouse/MM_H3K27ac_UNST_merged.bed merged_mouse/MM_H3K27ac_PIC4_merged.bed | sort -k1,1 -k2,2n | mergeBed -i - > merged_mouse/MM_H3K27ac_all_merged.bed
+awk '{printf("%s\t%s\t%s\tMM_H3K27ac_all_merged_%s\n", $1,$2,$3,NR)}' merged_mouse/MM_H3K27ac_all_merged.bed > merged_mouse/MM_H3K27ac_all_merged.bed4
+
+
+# merge MM UNST + PIC4 H3K4me3
+bash overlap_individulas_and_merge_per_condition.sh mouse/MM3_H3K4me3_UNST_peaks.narrowPeak mouse/MM4_H3K4me3_UNST_peaks.narrowPeak mouse/MM5_H3K4me3_UNST_peaks.narrowPeak merged_mouse/MM_H3K4me3_UNST_merged.bed
+bash overlap_individulas_and_merge_per_condition.sh mouse/MM3_H3K4me3_PIC4_peaks.narrowPeak mouse/MM4_H3K4me3_PIC4_peaks.narrowPeak mouse/MM5_H3K4me3_PIC4_peaks.narrowPeak merged_mouse/MM_H3K4me3_PIC4_merged.bed
+cat merged_mouse/MM_H3K4me3_UNST_merged.bed merged_mouse/MM_H3K4me3_PIC4_merged.bed | sort -k1,1 -k2,2n | mergeBed -i - > merged_mouse/MM_H3K4me3_all_merged.bed
+awk '{printf("%s\t%s\t%s\tMM_H3K4me3_all_merged_%s\n", $1,$2,$3,NR)}' merged_mouse/MM_H3K4me3_all_merged.bed > merged_mouse/MM_H3K4me3_all_merged.bed4
+
