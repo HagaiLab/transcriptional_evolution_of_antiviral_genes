@@ -1,7 +1,7 @@
 Transcriptional evolution of antiviral genes between primates and rodents
 ============================================================================================
 This directory contains data files and scripts related to our work: "Evolutionary divergence of induced versus constitutive antiviral gene expression between primates and rodents".
-# Folders explanations:
+## Folders explanations:
 1. input_files folder contains commomly used input files for most of the analyses in the folders bellow, such as human and mouse ortholog genes, lists of the 4 gene group as defined in the manuscript, etc.
    
 2. 4_gene_group_expression_patterns folder contains a script for generating plots representing the four groups of human-mouse transcriptionally divergent genes and their patterns of expression. Input files for the script are in input_files folder.
